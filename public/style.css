@@ -1,0 +1,36 @@
+body {
+  font-family: "Lato";
+  background: #3b3b3b;
+  color: white;
+  margin: 25px;
+}
+
+h1 { font-size: 75px; }
+h2 { font-size: 36px; }
+
+h1, h2 {
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats li {
+  display: inline;
+  margin-right: 25px;
+  letter-spacing: 0.5px;
+  color: #a1a1a1;
+}
+
+th {
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 12px;
+  color: #7f7f7f;
+}
+
+tbody { font-weight: 300; }
+
+td { padding: 0 100px 15px 0; }
+
+.fail { color: #ba3226; }

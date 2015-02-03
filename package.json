@@ -1,0 +1,25 @@
+{
+  "name": "rethink-status",
+  "version": "0.0.1",
+  "description": "A simple RethinkDB cluster monitoring frontend demo with realtime graphs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rethinkdb/rethink-status.git"
+  },
+  "author": "Ryan Paul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rethinkdb/rethink-status/issues"
+  },
+  "homepage": "https://github.com/rethinkdb/rethink-status",
+  "dependencies": {
+    "express": "^4.11.2",
+    "rethinkdb": "^1.16.0",
+    "socket.io": "^1.3.2"
+  }
+}

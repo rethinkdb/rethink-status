@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/epoch/0.6.0/epoch.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.5.2/polymer.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript" src="/app.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/epoch/0.6.0/epoch.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,300,400">
+    
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body class="epoch-theme-dark">
+    <h1>Cluster Status</h1>
+
+    <div class="epoch category40" id="chart" style="width: 600px; height: 200px;"></div>
+
+    <template id="cluster" is="auto-binding">
+      <ul class="stats">
+        <li>Reads/sec: {{stats.read_docs_per_sec | toFixed(2)}}</li>
+        <li>Writes/sec: {{stats.written_docs_per_sec | toFixed(2)}}</li>
+        <li>Queries/sec: {{stats.queries_per_sec | toFixed(2)}}</li>
+        <li>Clients: {{stats.clients_active}}/{{stats.client_connections}}</li>
+      </ul>
+
+      <h2>Servers</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Port</th>
+            <th>Admin</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template repeat="{{server in servers}}">
+            <tr style="{{ !server.status && 'display: none' }}"
+                class="{{ server.status != 'connected' && 'fail' }}">
+              <td>{{server.name}}</td>
+              <td>{{server.network.reql_port}}</td>
+              <td>{{server.network.http_admin_port}}</td>
+              <td>{{server.status}}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </template>
+
+  </body>
+</html>
