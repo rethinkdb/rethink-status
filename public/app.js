@@ -19,7 +19,7 @@ $(function() {
   var socket = io.connect();
 
   socket.on("stats", function(data) {
-    cluster.stats = data.new_val.query_engine;
+    cluster.stats = data.query_engine;
     chart.push([
       { time: timestamp(), y: cluster.stats.written_docs_per_sec },
       { time: timestamp(), y: cluster.stats.read_docs_per_sec}
@@ -30,11 +30,11 @@ $(function() {
     if (data.length)
       return cluster.servers = data;
 
-    if (!data.old_val)
-      return cluster.servers.push(data.new_val);
+    if (!data.OldValue)
+      return cluster.servers.push(data.NewValue);
 
     for (var s in cluster.servers)
-      if (cluster.servers[s].id == data.old_val.id)
-        cluster.servers[s] = data.new_val;
+      if (cluster.servers[s].id == data.OldValue.id)
+        cluster.servers[s] = data.NewValue;
   });
 });
