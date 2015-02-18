@@ -15,8 +15,7 @@ func main() {
 		Database: "rethinkdb",
 	})
 
-	stats, _ := r.Table("stats").Filter(
-		r.Row.Field("id").AtIndex(0).Eq("cluster")).Changes().Run(conn)
+	stats, _ := r.Table("stats").Get([1]string{"cluster"}).Changes().Run(conn)
 
 	go func() {
 		var change r.WriteChanges
